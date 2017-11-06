@@ -1,4 +1,0 @@
-F:\Bootcamp\Materi\Teknologi\SimpleFleetManagement\SimpleFleetManagement.ViewModel\bin\Debug\SimpleFleetManagement.ViewModel.dll
-F:\Bootcamp\Materi\Teknologi\SimpleFleetManagement\SimpleFleetManagement.ViewModel\bin\Debug\SimpleFleetManagement.ViewModel.pdb
-F:\Bootcamp\Materi\Teknologi\SimpleFleetManagement\SimpleFleetManagement.ViewModel\obj\Debug\SimpleFleetManagement.ViewModel.dll
-F:\Bootcamp\Materi\Teknologi\SimpleFleetManagement\SimpleFleetManagement.ViewModel\obj\Debug\SimpleFleetManagement.ViewModel.pdb
