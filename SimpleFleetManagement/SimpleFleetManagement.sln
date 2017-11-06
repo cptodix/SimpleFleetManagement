@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5.SimpleFleetManagement.MVC", "SimpleFleetManagement\5.SimpleFleetManagement.MVC.csproj", "{B2D7ED17-2314-4356-A896-B13DC74C5051}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4.SimpleFleetManagement.Tests", "SimpleFleetManagement.Tests\4.SimpleFleetManagement.Tests.csproj", "{CEDB1138-1280-4653-B0DB-32FADA802CAB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1.SimpleFleetManagement.DataModel", "SimpleFleetManagement.DataModel\1.SimpleFleetManagement.DataModel.csproj", "{9028F5AB-A0F8-4AAE-8898-AAAE0566CBB8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2.SimpleFleetManagement.ViewModel", "SimpleFleetManagement.ViewModel\2.SimpleFleetManagement.ViewModel.csproj", "{82B4AE0E-0BAA-4E96-B9C6-3E8EE745F66C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3.SimpleFleetManagement.DataAccess", "SimpleFleetManagement.DataAccess\3.SimpleFleetManagement.DataAccess.csproj", "{FE982C75-E9FD-4D55-9ED7-FF7E61D970C6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{8A876230-A39E-4C81-AD2D-D68FE718306F}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B2D7ED17-2314-4356-A896-B13DC74C5051}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2D7ED17-2314-4356-A896-B13DC74C5051}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2D7ED17-2314-4356-A896-B13DC74C5051}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2D7ED17-2314-4356-A896-B13DC74C5051}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CEDB1138-1280-4653-B0DB-32FADA802CAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEDB1138-1280-4653-B0DB-32FADA802CAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEDB1138-1280-4653-B0DB-32FADA802CAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEDB1138-1280-4653-B0DB-32FADA802CAB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9028F5AB-A0F8-4AAE-8898-AAAE0566CBB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9028F5AB-A0F8-4AAE-8898-AAAE0566CBB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9028F5AB-A0F8-4AAE-8898-AAAE0566CBB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9028F5AB-A0F8-4AAE-8898-AAAE0566CBB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82B4AE0E-0BAA-4E96-B9C6-3E8EE745F66C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82B4AE0E-0BAA-4E96-B9C6-3E8EE745F66C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82B4AE0E-0BAA-4E96-B9C6-3E8EE745F66C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82B4AE0E-0BAA-4E96-B9C6-3E8EE745F66C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE982C75-E9FD-4D55-9ED7-FF7E61D970C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE982C75-E9FD-4D55-9ED7-FF7E61D970C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE982C75-E9FD-4D55-9ED7-FF7E61D970C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE982C75-E9FD-4D55-9ED7-FF7E61D970C6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

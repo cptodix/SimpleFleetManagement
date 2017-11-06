@@ -1,0 +1,13 @@
+F:\Bootcamp\Materi\Teknologi\SimpleFleetManagement\SimpleFleetManagement.DataAccess\bin\Debug\SimpleFleetManagement.DataAccess.dll
+F:\Bootcamp\Materi\Teknologi\SimpleFleetManagement\SimpleFleetManagement.DataAccess\bin\Debug\SimpleFleetManagement.DataAccess.pdb
+F:\Bootcamp\Materi\Teknologi\SimpleFleetManagement\SimpleFleetManagement.DataAccess\obj\Debug\SimpleFleetManagement.DataAccess.dll
+F:\Bootcamp\Materi\Teknologi\SimpleFleetManagement\SimpleFleetManagement.DataAccess\obj\Debug\SimpleFleetManagement.DataAccess.pdb
+F:\Bootcamp\MiniProject\SimpleFleetManagement\SimpleFleetManagement.DataAccess\bin\Debug\SimpleFleetManagement.DataAccess.dll.config
+F:\Bootcamp\MiniProject\SimpleFleetManagement\SimpleFleetManagement.DataAccess\bin\Debug\SimpleFleetManagement.DataAccess.dll
+F:\Bootcamp\MiniProject\SimpleFleetManagement\SimpleFleetManagement.DataAccess\bin\Debug\SimpleFleetManagement.DataAccess.pdb
+F:\Bootcamp\MiniProject\SimpleFleetManagement\SimpleFleetManagement.DataAccess\bin\Debug\EntityFramework.dll
+F:\Bootcamp\MiniProject\SimpleFleetManagement\SimpleFleetManagement.DataAccess\bin\Debug\EntityFramework.SqlServer.dll
+F:\Bootcamp\MiniProject\SimpleFleetManagement\SimpleFleetManagement.DataAccess\bin\Debug\EntityFramework.xml
+F:\Bootcamp\MiniProject\SimpleFleetManagement\SimpleFleetManagement.DataAccess\bin\Debug\EntityFramework.SqlServer.xml
+F:\Bootcamp\MiniProject\SimpleFleetManagement\SimpleFleetManagement.DataAccess\obj\Debug\SimpleFleetManagement.DataAccess.dll
+F:\Bootcamp\MiniProject\SimpleFleetManagement\SimpleFleetManagement.DataAccess\obj\Debug\SimpleFleetManagement.DataAccess.pdb

@@ -1,0 +1,15 @@
+F:\Bootcamp\Materi\Teknologi\SimpleFleetManagement\SimpleFleetManagement.DataModel\bin\Debug\SimpleFleetManagement.DataModel.dll
+F:\Bootcamp\Materi\Teknologi\SimpleFleetManagement\SimpleFleetManagement.DataModel\bin\Debug\SimpleFleetManagement.DataModel.pdb
+F:\Bootcamp\Materi\Teknologi\SimpleFleetManagement\SimpleFleetManagement.DataModel\obj\Debug\1.SimpleFleetManagement.DataModel.csprojResolveAssemblyReference.cache
+F:\Bootcamp\Materi\Teknologi\SimpleFleetManagement\SimpleFleetManagement.DataModel\obj\Debug\SimpleFleetManagement.DataModel.dll
+F:\Bootcamp\Materi\Teknologi\SimpleFleetManagement\SimpleFleetManagement.DataModel\obj\Debug\SimpleFleetManagement.DataModel.pdb
+F:\Bootcamp\MiniProject\SimpleFleetManagement\SimpleFleetManagement.DataModel\bin\Debug\SimpleFleetManagement.DataModel.dll.config
+F:\Bootcamp\MiniProject\SimpleFleetManagement\SimpleFleetManagement.DataModel\bin\Debug\SimpleFleetManagement.DataModel.dll
+F:\Bootcamp\MiniProject\SimpleFleetManagement\SimpleFleetManagement.DataModel\bin\Debug\SimpleFleetManagement.DataModel.pdb
+F:\Bootcamp\MiniProject\SimpleFleetManagement\SimpleFleetManagement.DataModel\bin\Debug\EntityFramework.dll
+F:\Bootcamp\MiniProject\SimpleFleetManagement\SimpleFleetManagement.DataModel\bin\Debug\EntityFramework.SqlServer.dll
+F:\Bootcamp\MiniProject\SimpleFleetManagement\SimpleFleetManagement.DataModel\bin\Debug\EntityFramework.xml
+F:\Bootcamp\MiniProject\SimpleFleetManagement\SimpleFleetManagement.DataModel\bin\Debug\EntityFramework.SqlServer.xml
+F:\Bootcamp\MiniProject\SimpleFleetManagement\SimpleFleetManagement.DataModel\obj\Debug\1.SimpleFleetManagement.DataModel.csprojResolveAssemblyReference.cache
+F:\Bootcamp\MiniProject\SimpleFleetManagement\SimpleFleetManagement.DataModel\obj\Debug\SimpleFleetManagement.DataModel.dll
+F:\Bootcamp\MiniProject\SimpleFleetManagement\SimpleFleetManagement.DataModel\obj\Debug\SimpleFleetManagement.DataModel.pdb
