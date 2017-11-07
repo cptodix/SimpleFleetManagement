@@ -13,9 +13,9 @@ namespace SimpleFleetManagement.ViewModel
         [Required]
         public string MerkId { get; set; }
         [Required]
-        public string TypeId { get; set; }        
+        public string TypeId { get; set; }
         [Required]
-        public string Description { get;set }
+        public string Description { get; set; }
 
         public bool IsActive { get; set; }
                 
