@@ -2,7 +2,7 @@
 using System.Security.Claims;
 using System.Security.Principal;
 
-namespace MVC05.MVC.Extensions
+namespace SimpleFleetManagement.Extensions
 {
     public static class ClaimsExtensions
     {
