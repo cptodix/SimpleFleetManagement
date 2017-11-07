@@ -149,3 +149,14 @@ ALTER TABLE [dbo].[MstTypeBus]  WITH CHECK ADD  CONSTRAINT [FK_MstTypeBus_MstMer
 REFERENCES [dbo].[MstMerkBus] ([MerkId])
 
 ALTER TABLE [dbo].[MstTypeBus] CHECK CONSTRAINT [FK_MstTypeBus_MstMerkBus]
+
+CREATE TABLE [dbo].[MstPart](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[PartId] [varchar](10) NOT NULL,
+	[Description] [varchar](50) NOT NULL,
+	[Price] [money] NOT NULL,
+ CONSTRAINT [PK_MstPart] PRIMARY KEY CLUSTERED 
+(
+	[PartId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]

@@ -20,6 +20,7 @@ namespace SimpleFleetManagement.DataModel
         public virtual DbSet<MstPart> MstParts { get; set; }
         public virtual DbSet<MstService> MstServices { get; set; }
         public virtual DbSet<MstTypeBu> MstTypeBus { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -51,6 +52,14 @@ namespace SimpleFleetManagement.DataModel
             modelBuilder.Entity<MstCrew>()
                 .Property(e => e.Role)
                 .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<MstCrew>()
+                .Property(e => e.CreatedBy)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<MstCrew>()
+                .Property(e => e.ModifiedBy)
                 .IsUnicode(false);
 
             modelBuilder.Entity<MstCustomer>()
@@ -89,6 +98,14 @@ namespace SimpleFleetManagement.DataModel
                 .Property(e => e.OrganizationEmail)
                 .IsUnicode(false);
 
+            modelBuilder.Entity<MstCustomer>()
+                .Property(e => e.CreatedBy)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<MstCustomer>()
+                .Property(e => e.ModifiedBy)
+                .IsUnicode(false);
+
             modelBuilder.Entity<MstFleet>()
                 .Property(e => e.FleetId)
                 .IsUnicode(false);
@@ -105,12 +122,28 @@ namespace SimpleFleetManagement.DataModel
                 .Property(e => e.Karoseri)
                 .IsUnicode(false);
 
+            modelBuilder.Entity<MstFleet>()
+                .Property(e => e.CreatedBy)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<MstFleet>()
+                .Property(e => e.ModifiedBy)
+                .IsUnicode(false);
+
             modelBuilder.Entity<MstKaroseri>()
                 .Property(e => e.KaroseriId)
                 .IsUnicode(false);
 
             modelBuilder.Entity<MstKaroseri>()
                 .Property(e => e.Description)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<MstKaroseri>()
+                .Property(e => e.CreatedBy)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<MstKaroseri>()
+                .Property(e => e.ModifiedBy)
                 .IsUnicode(false);
 
             modelBuilder.Entity<MstKaroseri>()
@@ -125,6 +158,14 @@ namespace SimpleFleetManagement.DataModel
 
             modelBuilder.Entity<MstMerkBu>()
                 .Property(e => e.Description)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<MstMerkBu>()
+                .Property(e => e.CreatedBy)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<MstMerkBu>()
+                .Property(e => e.ModifiedBy)
                 .IsUnicode(false);
 
             modelBuilder.Entity<MstMerkBu>()
@@ -144,12 +185,28 @@ namespace SimpleFleetManagement.DataModel
                 .Property(e => e.Price)
                 .HasPrecision(19, 4);
 
+            modelBuilder.Entity<MstPart>()
+                .Property(e => e.CreatedBy)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<MstPart>()
+                .Property(e => e.ModifiedBy)
+                .IsUnicode(false);
+
             modelBuilder.Entity<MstService>()
                 .Property(e => e.ServiceId)
                 .IsUnicode(false);
 
             modelBuilder.Entity<MstService>()
                 .Property(e => e.Description)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<MstService>()
+                .Property(e => e.CreatedBy)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<MstService>()
+                .Property(e => e.ModifiedBy)
                 .IsUnicode(false);
 
             modelBuilder.Entity<MstTypeBu>()
@@ -162,6 +219,14 @@ namespace SimpleFleetManagement.DataModel
 
             modelBuilder.Entity<MstTypeBu>()
                 .Property(e => e.Description)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<MstTypeBu>()
+                .Property(e => e.CreatedBy)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<MstTypeBu>()
+                .Property(e => e.ModifiedBy)
                 .IsUnicode(false);
 
             modelBuilder.Entity<MstTypeBu>()

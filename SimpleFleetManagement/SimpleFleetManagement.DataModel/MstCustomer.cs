@@ -45,5 +45,15 @@ namespace SimpleFleetManagement.DataModel
         public string OrganizationEmail { get; set; }
 
         public bool IsActive { get; set; }
+
+        [StringLength(50)]
+        public string CreatedBy { get; set; }
+
+        public DateTime? Created { get; set; }
+
+        [StringLength(50)]
+        public string ModifiedBy { get; set; }
+
+        public DateTime? Modified { get; set; }
     }
 }

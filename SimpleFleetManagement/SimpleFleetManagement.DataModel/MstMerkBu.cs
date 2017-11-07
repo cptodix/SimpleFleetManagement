@@ -24,6 +24,18 @@ namespace SimpleFleetManagement.DataModel
         [StringLength(50)]
         public string Description { get; set; }
 
+        public bool IsActive { get; set; }
+
+        [StringLength(50)]
+        public string CreatedBy { get; set; }
+
+        public DateTime? Created { get; set; }
+
+        [StringLength(50)]
+        public string ModifiedBy { get; set; }
+
+        public DateTime? Modified { get; set; }
+
         public virtual ICollection<MstTypeBu> MstTypeBus { get; set; }
     }
 }

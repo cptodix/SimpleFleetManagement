@@ -22,5 +22,17 @@ namespace SimpleFleetManagement.DataModel
 
         [Column(TypeName = "money")]
         public decimal Price { get; set; }
+
+        public bool IsActive { get; set; }
+
+        [StringLength(50)]
+        public string CreatedBy { get; set; }
+
+        public DateTime? Created { get; set; }
+
+        [StringLength(50)]
+        public string ModifiedBy { get; set; }
+
+        public DateTime? Modified { get; set; }
     }
 }
