@@ -48,6 +48,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FleetManagementContext.cs" />
+    <Compile Include="MstCrew.cs" />
+    <Compile Include="MstCustomer.cs" />
+    <Compile Include="MstFleet.cs" />
+    <Compile Include="MstKaroseri.cs" />
+    <Compile Include="MstMerkBu.cs" />
+    <Compile Include="MstPart.cs" />
+    <Compile Include="MstService.cs" />
+    <Compile Include="MstTypeBu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
