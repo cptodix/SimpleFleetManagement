@@ -4,6 +4,7 @@
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
 # User-specific files
+*.v12.suo
 *.suo
 *.user
 *.userosscache
@@ -290,3 +291,6 @@ __pycache__/
 *.btm.cs
 *.odx.cs
 *.xsd.cs
+*.suo
+*.suo
+*.suo
