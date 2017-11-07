@@ -48,8 +48,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CrewDataAccess.cs" />
+    <Compile Include="FleetDataAccess.cs" />
     <Compile Include="KaroseriDataAccess.cs" />
-    <Compile Include="KaroseriViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

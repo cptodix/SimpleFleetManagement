@@ -119,7 +119,7 @@ namespace SimpleFleetManagement.DataModel
                 .IsUnicode(false);
 
             modelBuilder.Entity<MstFleet>()
-                .Property(e => e.Karoseri)
+                .Property(e => e.KaroseriId)
                 .IsUnicode(false);
 
             modelBuilder.Entity<MstFleet>()
@@ -149,7 +149,7 @@ namespace SimpleFleetManagement.DataModel
             modelBuilder.Entity<MstKaroseri>()
                 .HasMany(e => e.MstFleets)
                 .WithRequired(e => e.MstKaroseri)
-                .HasForeignKey(e => e.Karoseri)
+                .HasForeignKey(e => e.KaroseriId)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<MstMerkBu>()

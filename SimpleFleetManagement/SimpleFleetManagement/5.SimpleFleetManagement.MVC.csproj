@@ -119,6 +119,8 @@
     <Compile Include="App_Start\BundleConfigDefault.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CrewController.cs" />
+    <Compile Include="Controllers\FleetController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KaroseriController.cs" />
     <Compile Include="Extensions\ClaimsExtensions.cs" />
@@ -1064,6 +1066,16 @@
     <Content Include="Views\Karoseri\Create.cshtml" />
     <Content Include="Views\Karoseri\Edit.cshtml" />
     <Content Include="Views\Karoseri\Delete.cshtml" />
+    <Content Include="Views\Fleet\Index.cshtml" />
+    <Content Include="Views\Fleet\List.cshtml" />
+    <Content Include="Views\Fleet\Create.cshtml" />
+    <Content Include="Views\Fleet\Edit.cshtml" />
+    <Content Include="Views\Fleet\Delete.cshtml" />
+    <Content Include="Views\Crew\Index.cshtml" />
+    <Content Include="Views\Crew\List.cshtml" />
+    <Content Include="Views\Crew\Create.cshtml" />
+    <Content Include="Views\Crew\Edit.cshtml" />
+    <Content Include="Views\Crew\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
