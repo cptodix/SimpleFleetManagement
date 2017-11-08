@@ -1,0 +1,116 @@
+﻿@model IEnumerable<SimpleFleetManagement.ViewModel.CrewViewModel>
+
+
+<table id="data-list" class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CrewId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CrewName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DrivingLicenseNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlaceOfBirth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfBirth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GenderName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RoleName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CrewId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CrewName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DrivingLicenseNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PlaceOfBirth)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateOfBirth)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GenderName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RoleName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsActive)
+                </td>
+                <td>
+                    <input type="button" value="Edit" class="btn btn-warning btn-edit" data-id="@item.Id" />
+                    <input type="button" value="Delete" class="btn btn-danger btn-delete" data-id="@item.Id" />
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@Scripts.Render("~/AdminLTE/plugins/datatables/js")
+
+<script type="text/javascript">
+    $("#data-list").DataTable({
+        "paging": true,
+        "lengthChange": true,
+        "searching": true,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false
+    });
+
+    $(".btn-edit").click(function () {
+        //alert('Idnya adalah : ' + $(this).attr("data-id"));
+        $.ajax({
+            url: '@Url.Action("Edit","Crew")',
+            type: 'get',
+            data: { id: $(this).attr("data-id") },
+            success: function (result) {
+                $(".modal-body").html(result);
+                $(".modal-title").html("Edit Crew")
+                $("#modal-form").modal("show");
+            }
+        });
+    });
+
+    $(".btn-delete").click(function () {
+        //alert('Idnya adalah : ' + $(this).attr("data-id"));
+        $.ajax({
+            url: '@Url.Action("Delete","Crew")',
+            type: 'get',
+            data: { id: $(this).attr("data-id") },
+            success: function (result) {
+                $(".modal-body").html(result);
+                $(".modal-title").html("Delete Crew")
+                $("#modal-form").modal("show");
+            }
+        });
+    });
+</script>

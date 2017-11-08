@@ -26,12 +26,10 @@ namespace SimpleFleetManagement.DataModel
 
         [Required]
         [StringLength(10)]
-        public string Karoseri { get; set; }
+        public string KaroseriId { get; set; }
 
         public int SeatCapacity { get; set; }
-
-        public bool IsInUse { get; set; }
-
+        
         public bool IsActive { get; set; }
 
         [StringLength(50)]

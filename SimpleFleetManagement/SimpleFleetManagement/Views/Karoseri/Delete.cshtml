@@ -1,0 +1,60 @@
+﻿@model SimpleFleetManagement.ViewModel.KaroseriViewModel
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.KaroseriId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KaroseriId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsActive)
+        </dd>
+        
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="button" value="Delete" class="btn btn-danger btn-delete-conf" data-id="@Model.Id" />
+            <input type="button" value="Cancel" class="btn btn-default" data-dismiss="modal" />
+        </div>
+    }
+</div>
+
+<script type="text/javascript">
+    $(".btn-delete-conf").click(function () {
+        //alert('Idnya adalah : ' + $(this).attr('data-id'));
+        $.ajax({
+            url: '@Url.Action("DeleteConf","Karoseri")',
+            type: 'post',
+            data: { id: $(this).attr('data-id') },
+            success: function (result) {
+                if (result.success) {
+                    $("#modal-form").modal("hide");
+                    ShowList();
+                }
+                else {
+                    alert('Error: ' + result.Message);
+                }
+            }
+        });
+    });
+</script>

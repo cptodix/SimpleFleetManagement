@@ -16,16 +16,18 @@ namespace SimpleFleetManagement.ViewModel
         [Required]
         public string TypeId { get; set; }
 
+        public string TypeName { get; set; }
+
         [Required]
         public string LicenseNumber { get; set; }
 
         [Required]
-        public string Karoseri { get; set; }
+        public string KaroseriId { get; set; }
+
+        public string KaroseriName { get; set; }
 
         public int SeatCapacity { get; set; }
-
-        public bool IsInUse { get; set; }
-
+        
         public bool IsActive { get; set; }
 
         public string CreatedBy { get; set; }

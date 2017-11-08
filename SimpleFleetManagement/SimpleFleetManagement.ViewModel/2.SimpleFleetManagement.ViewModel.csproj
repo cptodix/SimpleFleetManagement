@@ -45,9 +45,13 @@
     <Compile Include="FleetViewModel.cs" />
     <Compile Include="KaroseriViewModel.cs" />
     <Compile Include="MerkBusViewModel.cs" />
+<<<<<<< HEAD
     <Compile Include="PartViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceViewModel.cs" />
+=======
+    <Compile Include="Properties\AssemblyInfo.cs" />
+>>>>>>> 207aee84b0778a9eea20ca509a71c317996340e7
     <Compile Include="TypeBusViewModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
