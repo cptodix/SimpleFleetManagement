@@ -296,5 +296,5 @@ __pycache__/
 *.suo
 *.csproj
 *.user
-*.csproj
-*.csproj
+**.csproj
+**.user.csproj
