@@ -30,9 +30,11 @@ namespace SimpleFleetManagement.ViewModel
         public string CustomerPhone { get; set; }
 
         public string OrganizationPhone { get; set; }
+
         public string OrganizationEmail { get; set; }
 
         public bool IsActive { get; set; }
+
         public string CreatedBy { get; set; }
 
         public DateTime? Created { get; set; }
