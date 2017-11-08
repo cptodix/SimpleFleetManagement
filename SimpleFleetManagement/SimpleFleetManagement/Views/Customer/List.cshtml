@@ -1,0 +1,121 @@
+﻿@model IEnumerable<SimpleFleetManagement.ViewModel.CustomerViewModel>
+
+<table id="data-list" class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrganizationName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrganizationAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerPhone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrganizationPhone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrganizationEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrganizationName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerAddress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrganizationAddress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerPhone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrganizationPhone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrganizationEmail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsActive)
+                </td>
+                <td>
+                    <input type="button" value="Edit" class="btn btn-warning btn-edit" data-id="@item.Id" />
+                    <input type="button" value="Delete" class="btn btn-danger btn-delete" data-id="@item.Id" />
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@Scripts.Render("~/AdminLTE/plugins/datatables/js")
+
+<script type="text/javascript">
+    $("#data-list").DataTable({
+        "paging": true,
+        "lengthChange": true,
+        "searching": true,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false
+    });
+
+    $(".btn-edit").click(function () {
+        //alert('Idnya adalah : ' + $(this).attr("data-id"));
+        $.ajax({
+            url: '@Url.Action("Edit","Customer")',
+            type: 'get',
+            data: { id: $(this).attr("data-id") },
+            success: function (result) {
+                $(".modal-body").html(result);
+                $(".modal-title").html("Edit Customer")
+                $("#modal-form").modal("show");
+            }
+        });
+    });
+
+    $(".btn-delete").click(function () {
+        //alert('Idnya adalah : ' + $(this).attr("data-id"));
+        $.ajax({
+            url: '@Url.Action("Delete", "Customer")',
+            type: 'get',
+            data: { id: $(this).attr("data-id") },
+            success: function (result) {
+                $(".modal-body").html(result);
+                $(".modal-title").html("Delete Customer")
+                $("#modal-form").modal("show");
+            }
+        });
+    });
+</script>

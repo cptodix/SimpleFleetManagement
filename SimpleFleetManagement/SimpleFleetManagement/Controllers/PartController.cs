@@ -27,19 +27,19 @@ namespace SimpleFleetManagement.Controllers
             return View();
         }
 
-        public ActionResult Edit (int id)
+        public ActionResult Edit(int id)
         {
             return View(PartDataAccess.GetById(id));
         }
 
         [HttpPost]
-        public ActionResult Create (PartViewModel model)
+        public ActionResult Create(PartViewModel model)
         {
             return CreateEdit(model);
         }
 
         [HttpPost]
-        public ActionResult Edit (PartViewModel model)
+        public ActionResult Edit(PartViewModel model)
         {
             return CreateEdit(model);
         }
@@ -70,12 +70,12 @@ namespace SimpleFleetManagement.Controllers
             }
         }
 
-        public ActionResult Delete (int id)
+        public ActionResult Delete(int id)
         {
             return View(PartDataAccess.GetById(id));
         }
 
-        public ActionResult DeleteConfirm (int id)
+        public ActionResult DeleteConfirm(int id)
         {
             if (PartDataAccess.Delete(id))
             {
