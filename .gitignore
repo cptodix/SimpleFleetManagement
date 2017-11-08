@@ -9,8 +9,8 @@
 *.user
 *.userosscache
 *.sln.docstates
-App.config
-Web.config
+**App.config
+**Web.config
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
@@ -295,3 +295,6 @@ __pycache__/
 *.suo
 *.suo
 *.csproj
+*.user
+**.csproj
+**.user.csproj
