@@ -1,0 +1,64 @@
+﻿@model IEnumerable<SimpleFleetManagement.ViewModel.MerkBusViewModel>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MerkId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MerkId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsActive)
+        </td>        
+        <td>
+            <input type="button" value="Edit" class="btn btn-warning btn-edit" data-id="@item.Id" />
+            <input type="button" value="Delete" class="btn btn-danger btn-delete" data-id="@item.Id" />
+        </td>
+    </tr>
+}
+
+</table>
+
+<script type="text/javascript">
+    $(".btn-edit").click(function () {
+        //alert('Idnya adalah : ' + $(this).attr("data-id"));
+        $.ajax({
+            url: '@Url.Action("Edit", "MerkBus")',
+            type: 'get',
+            data: { id: $(this).attr("data-id") },
+            success: function (result) {
+                $(".modal-body").html(result);
+                $("#modal-form").modal("show");
+            }
+        });
+    });
+
+    $(".btn-delete").click(function () {
+        //alert('Idnya adalah : ' + $(this).attr("data-id"));
+        $.ajax({
+            url: '@Url.Action("Delete", "MerkBus")',
+            type: 'get',
+            data: { id: $(this).attr("data-id") },
+            success: function (result) {
+                $(".modal-body").html(result);
+                $("#modal-form").modal("show");
+            }
+        });
+    });
+
+</script>

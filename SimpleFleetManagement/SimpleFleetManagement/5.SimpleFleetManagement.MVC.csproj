@@ -120,6 +120,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MerkBusController.cs" />
+    <Compile Include="Controllers\PartController.cs" />
+    <Compile Include="Controllers\ServiceController.cs" />
     <Compile Include="Extensions\ClaimsExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -1058,6 +1061,21 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Part\Index.cshtml" />
+    <Content Include="Views\Part\List.cshtml" />
+    <Content Include="Views\Part\Create.cshtml" />
+    <Content Include="Views\Part\Edit.cshtml" />
+    <Content Include="Views\Part\Delete.cshtml" />
+    <Content Include="Views\Service\Index.cshtml" />
+    <Content Include="Views\Service\List.cshtml" />
+    <Content Include="Views\Service\Create.cshtml" />
+    <Content Include="Views\Service\Edit.cshtml" />
+    <Content Include="Views\Service\Delete.cshtml" />
+    <Content Include="Views\MerkBus\Index.cshtml" />
+    <Content Include="Views\MerkBus\List.cshtml" />
+    <Content Include="Views\MerkBus\Create.cshtml" />
+    <Content Include="Views\MerkBus\Edit.cshtml" />
+    <Content Include="Views\MerkBus\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1066,6 +1084,16 @@
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SimpleFleetManagement.DataAccess\3.SimpleFleetManagement.DataAccess.csproj">
+      <Project>{fe982c75-e9fd-4d55-9ed7-ff7e61d970c6}</Project>
+      <Name>3.SimpleFleetManagement.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SimpleFleetManagement.ViewModel\2.SimpleFleetManagement.ViewModel.csproj">
+      <Project>{82b4ae0e-0baa-4e96-b9c6-3e8ee745f66c}</Project>
+      <Name>2.SimpleFleetManagement.ViewModel</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
