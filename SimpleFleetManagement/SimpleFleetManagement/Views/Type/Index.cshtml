@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Service";
+    ViewBag.Title = "TypeBus";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -14,7 +14,7 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <div id="table-list">Listnya nanti ada disini</div>
+        <div id="table-list">Listnya ada disini!</div>
     </div>
 </div>
 
@@ -44,17 +44,18 @@
         function ShowList()
         {
             $.ajax({
-                url: '@Url.Action("List", "Service")',
+                url: '@Url.Action("List","Type")',
                 type: 'get',
-                success: function (result) {
+                success : function (result)
+                {
                     $("#table-list").html(result);
                 }
-            });
+            })
         }
 
-        $("#btn-add").click(function () {
+    $("#btn-add").click(function () {
             $.ajax({
-                url: '@Url.Action("Create","Service")',
+                url: '@Url.Action("Create","Type")',
                 type: 'get',
                 success: function (result) {
                     $(".modal-body").html(result);
