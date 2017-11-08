@@ -122,13 +122,11 @@
     <Compile Include="Controllers\CrewController.cs" />
     <Compile Include="Controllers\FleetController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-<<<<<<< HEAD
     <Compile Include="Controllers\MerkBusController.cs" />
     <Compile Include="Controllers\PartController.cs" />
     <Compile Include="Controllers\ServiceController.cs" />
-=======
     <Compile Include="Controllers\KaroseriController.cs" />
->>>>>>> 207aee84b0778a9eea20ca509a71c317996340e7
+    <Compile Include="Controllers\TypeController.cs" />
     <Compile Include="Extensions\ClaimsExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -1067,7 +1065,6 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-<<<<<<< HEAD
     <Content Include="Views\Part\Index.cshtml" />
     <Content Include="Views\Part\List.cshtml" />
     <Content Include="Views\Part\Create.cshtml" />
@@ -1083,7 +1080,6 @@
     <Content Include="Views\MerkBus\Create.cshtml" />
     <Content Include="Views\MerkBus\Edit.cshtml" />
     <Content Include="Views\MerkBus\Delete.cshtml" />
-=======
     <Content Include="Views\Karoseri\Index.cshtml" />
     <Content Include="Views\Karoseri\List.cshtml" />
     <Content Include="Views\Karoseri\Create.cshtml" />
@@ -1099,7 +1095,11 @@
     <Content Include="Views\Crew\Create.cshtml" />
     <Content Include="Views\Crew\Edit.cshtml" />
     <Content Include="Views\Crew\Delete.cshtml" />
->>>>>>> 207aee84b0778a9eea20ca509a71c317996340e7
+    <Content Include="Views\Type\Index.cshtml" />
+    <Content Include="Views\Type\List.cshtml" />
+    <Content Include="Views\Type\Create.cshtml" />
+    <Content Include="Views\Type\Edit.cshtml" />
+    <Content Include="Views\Type\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

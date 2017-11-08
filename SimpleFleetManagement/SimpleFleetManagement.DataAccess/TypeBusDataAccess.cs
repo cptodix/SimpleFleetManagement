@@ -43,6 +43,7 @@ namespace SimpleFleetManagement.DataAccess
                 result = (from tb in db.MstTypeBus
                           join mb in db.MstMerkBus
                           on tb.MerkId equals mb.MerkId
+                          where tb.Id == id
                           select new TypeBusViewModel
                           {
                               Id = tb.Id,

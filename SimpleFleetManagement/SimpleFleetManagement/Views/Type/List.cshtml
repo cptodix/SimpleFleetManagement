@@ -1,9 +1,12 @@
-﻿@model IEnumerable<SimpleFleetManagement.ViewModel.ServiceViewModel>
+﻿@model IEnumerable<SimpleFleetManagement.ViewModel.TypeBusViewModel>
 
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.ServiceId)
+            @Html.DisplayNameFor(model => model.MerkId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TypeId)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Description)
@@ -17,7 +20,10 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.ServiceId)
+            @Html.DisplayFor(modelItem => item.MerkId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TypeId)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Description)
@@ -38,7 +44,7 @@
     $(".btn-edit").click(function () {
         //alert('Idnya adalah : ' + $(this).attr("data-id"));
         $.ajax({
-            url: '@Url.Action("Edit", "Service")',
+            url: '@Url.Action("Edit", "Type")',
             type: 'get',
             data: { id: $(this).attr("data-id") },
             success: function (result) {
@@ -51,7 +57,7 @@
     $(".btn-delete").click(function () {
         //alert('Idnya adalah : ' + $(this).attr("data-id"));
         $.ajax({
-            url: '@Url.Action("Delete", "Service")',
+            url: '@Url.Action("Delete", "Type")',
             type: 'get',
             data: { id: $(this).attr("data-id") },
             success: function (result) {

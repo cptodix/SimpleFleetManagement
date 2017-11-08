@@ -48,6 +48,7 @@ namespace SimpleFleetManagement.DataAccess
                         service.Created = model.Created;
                         service.ModifiedBy = model.ModifiedBy;
                         service.Modified = model.Modified;
+                        db.MstServices.Add(service);
                         db.SaveChanges();
                     }
                     else
@@ -61,8 +62,7 @@ namespace SimpleFleetManagement.DataAccess
                             service.CreatedBy = model.CreatedBy;
                             service.Created = model.Created;
                             service.ModifiedBy = model.ModifiedBy;
-                            service.Modified = model.Modified;
-                            db.MstServices.Add(service);
+                            service.Modified = model.Modified;                            
                             db.SaveChanges();    
                         }
                     }

@@ -8,9 +8,9 @@ using System.Web.Mvc;
 
 namespace SimpleFleetManagement.Controllers
 {
-    public class ServiceController : Controller
+    public class TypeController : Controller
     {
-        // GET: Service
+        // GET: Type
         public ActionResult Index()
         {
             return View();
@@ -18,50 +18,52 @@ namespace SimpleFleetManagement.Controllers
 
         public ActionResult List()
         {
-            List<ServiceViewModel> model = ServiceDataAccess.GetAll();
+            List<TypeBusViewModel> model = TypeBusDataAccess.GetAll();
             return View(model);
         }
 
         public ActionResult Create()
         {
+            ViewBag.MerkBusList = new SelectList(MerkBusDataAccess.GetAll(), "MerkId", "Description");
             return View();
         }
 
-        public ActionResult Edit(int id)
+        public ActionResult Edit (int id)
         {
-            return View(ServiceDataAccess.GetById(id));
+            ViewBag.MerkBusList = new SelectList(MerkBusDataAccess.GetAll(), "MerkId", "Description");
+            return View(TypeBusDataAccess.GetById(id));
         }
 
         [HttpPost]
-        public ActionResult Create(ServiceViewModel model)
+        public ActionResult Create(TypeBusViewModel model)
         {
             return CreateEdit(model);
         }
 
         [HttpPost]
-        public ActionResult Edit(ServiceViewModel model)
+        public ActionResult Edit(TypeBusViewModel model)
         {
             return CreateEdit(model);
         }
 
-        public ActionResult CreateEdit(ServiceViewModel model)
+        public ActionResult CreateEdit(TypeBusViewModel model)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    if (ServiceDataAccess.Update(model))
+                    if (TypeBusDataAccess.Update(model))
                     {
                         return Json(new { success = true, message = "Success" }, JsonRequestBehavior.AllowGet);
                     }
                     else
                     {
-                        return Json(new { success = false, message = ServiceDataAccess.Message }, JsonRequestBehavior.AllowGet);
+                        return Json(new { success = false, message = TypeBusDataAccess.Message }, JsonRequestBehavior.AllowGet);
                     }
                 }
                 else
                 {
-                    return Json(new { success = false, message = "Lengkapi!" }, JsonRequestBehavior.AllowGet);
+                    return Json(new { success = false, message = "Lengkapi isi form nya" }, JsonRequestBehavior.AllowGet);
                 }
             }
             catch (Exception ex)
@@ -72,22 +74,21 @@ namespace SimpleFleetManagement.Controllers
 
         public ActionResult Delete(int id)
         {
-            return View(ServiceDataAccess.GetById(id));
+            return View(TypeBusDataAccess.GetById(id));
         }
 
-        [HttpPost]
         public ActionResult DeleteConfirm(int id)
         {
-            if (ServiceDataAccess.Delete(id))
+            if (TypeBusDataAccess.Delete(id))
             {
                 return Json(new { success = true, message = "Success" }, JsonRequestBehavior.AllowGet);
-
             }
             else
             {
-                return Json(new { success = false, message = "Success" }, JsonRequestBehavior.AllowGet);
+                return Json(new { success = false, message = TypeBusDataAccess.Message }, JsonRequestBehavior.AllowGet);
             }
-            return Json(new { success = false, message = "Error" }, JsonRequestBehavior.AllowGet);
+            return Json(new { success = false, message = "Error :p" }, JsonRequestBehavior.AllowGet);
+
         }
     }
 }

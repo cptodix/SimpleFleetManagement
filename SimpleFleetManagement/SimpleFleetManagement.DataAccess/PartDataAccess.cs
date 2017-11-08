@@ -50,6 +50,7 @@ namespace SimpleFleetManagement.DataAccess
                         part.Created = model.Created;
                         part.ModifiedBy = model.ModifiedBy;
                         part.Modified = model.Modified;
+                        db.MstParts.Add(part);
                         db.SaveChanges();                            
                     }
                     else
@@ -64,8 +65,7 @@ namespace SimpleFleetManagement.DataAccess
                             part.CreatedBy = model.CreatedBy;
                             part.Created = model.Created;
                             part.ModifiedBy = model.ModifiedBy;
-                            part.Modified = model.Modified;
-                            db.MstParts.Add(part);
+                            part.Modified = model.Modified;                            
                             db.SaveChanges();                   
                         }
                     }
@@ -85,6 +85,7 @@ namespace SimpleFleetManagement.DataAccess
             using (var db = new FleetManagementContext())
             {
                 result = (from pt in db.MstParts
+                          where pt.Id == id
                           select new PartViewModel
                           {
                               Id = pt.Id,
