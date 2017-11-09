@@ -23,8 +23,6 @@ namespace SimpleFleetManagement.DataModel
         public virtual DbSet<TrxMaintenanceDetail> TrxMaintenanceDetails { get; set; }
         public virtual DbSet<TrxMaintenanceHeader> TrxMaintenanceHeaders { get; set; }
         public virtual DbSet<TrxBusOrder> TrxBusOrders { get; set; }
-        public virtual DbSet<TrxMaintenanceDetail> TrxMaintenanceDetails { get; set; }
-        public virtual DbSet<TrxMaintenanceHeader> TrxMaintenanceHeaders { get; set; }
         public virtual DbSet<TrxOrder> TrxOrders { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -213,13 +211,7 @@ namespace SimpleFleetManagement.DataModel
                 .WithRequired(e => e.MstPart)
                 .HasForeignKey(e => e.PartId)
                 .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<MstPart>()
-                .HasMany(e => e.TrxMaintenanceDetails1)
-                .WithRequired(e => e.MstPart1)
-                .HasForeignKey(e => e.PartId)
-                .WillCascadeOnDelete(false);
-
+            
             modelBuilder.Entity<MstService>()
                 .Property(e => e.ServiceId)
                 .IsUnicode(false);
