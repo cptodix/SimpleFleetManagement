@@ -160,3 +160,68 @@ CREATE TABLE [dbo].[MstPart](
 	[PartId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
+
+
+CREATE TABLE [dbo].[MstMaintenanceHeader](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[MaintenanceId] [varchar](10) NOT NULL,
+	[MaintenanceDate] [datetime] NOT NULL,
+	[FleetId] [varchar](10) NOT NULL,
+	[MaintenanceKm] [int] NOT NULL,
+	[TotalPrice] [money] NOT NULL,
+ CONSTRAINT [PK_MstMaintenanceHeader] PRIMARY KEY CLUSTERED 
+(
+	[MaintenanceId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+ALTER TABLE [dbo].[MstMaintenanceHeader]  WITH CHECK ADD  CONSTRAINT [FK_MstMaintenanceHeader_MstFleet] FOREIGN KEY([FleetId])
+REFERENCES [dbo].[MstFleet] ([FleetId])
+GO
+
+ALTER TABLE [dbo].[MstMaintenanceHeader] CHECK CONSTRAINT [FK_MstMaintenanceHeader_MstFleet]
+GO
+
+
+CREATE TABLE [dbo].[MstMaintenanceDetail](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[MaintenanceId] [varchar](10) NOT NULL,
+	[MechanicId] [varchar](10) NOT NULL,
+	[ServiceId] [varchar](10) NOT NULL,
+	[PartId] [varchar](10) NOT NULL,
+	[PartQuantity] [int] NOT NULL,
+	[SubTotalPrice] [money] NOT NULL,
+ CONSTRAINT [PK_MstMaintenanceDetail] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+ALTER TABLE [dbo].[MstMaintenanceDetail]  WITH CHECK ADD  CONSTRAINT [FK_MstMaintenanceDetail_MstCrew] FOREIGN KEY([PartId])
+REFERENCES [dbo].[MstPart] ([PartId])
+GO
+
+ALTER TABLE [dbo].[MstMaintenanceDetail] CHECK CONSTRAINT [FK_MstMaintenanceDetail_MstCrew]
+GO
+
+ALTER TABLE [dbo].[MstMaintenanceDetail]  WITH CHECK ADD  CONSTRAINT [FK_MstMaintenanceDetail_MstMaintenanceHeader] FOREIGN KEY([MaintenanceId])
+REFERENCES [dbo].[MstMaintenanceHeader] ([MaintenanceId])
+GO
+
+ALTER TABLE [dbo].[MstMaintenanceDetail] CHECK CONSTRAINT [FK_MstMaintenanceDetail_MstMaintenanceHeader]
+GO
+
+ALTER TABLE [dbo].[MstMaintenanceDetail]  WITH CHECK ADD  CONSTRAINT [FK_MstMaintenanceDetail_MstPart] FOREIGN KEY([PartId])
+REFERENCES [dbo].[MstPart] ([PartId])
+GO
+
+ALTER TABLE [dbo].[MstMaintenanceDetail] CHECK CONSTRAINT [FK_MstMaintenanceDetail_MstPart]
+GO
+
+ALTER TABLE [dbo].[MstMaintenanceDetail]  WITH CHECK ADD  CONSTRAINT [FK_MstMaintenanceDetail_MstService] FOREIGN KEY([ServiceId])
+REFERENCES [dbo].[MstService] ([ServiceId])
+GO
+
+ALTER TABLE [dbo].[MstMaintenanceDetail] CHECK CONSTRAINT [FK_MstMaintenanceDetail_MstService]
+GO
+

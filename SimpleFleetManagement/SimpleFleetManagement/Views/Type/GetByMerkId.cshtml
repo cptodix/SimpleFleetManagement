@@ -1,0 +1,7 @@
+﻿@model IEnumerable<SimpleFleetManagement.ViewModel.TypeBusViewModel>
+
+<option value="">Select Bus Type</option>
+@foreach (var item in Model)
+{
+    <option value="@item.TypeId">@item.Description</option>
+}

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
@@ -11,12 +12,13 @@ namespace SimpleFleetManagement.ViewModel
     {
         public int Id { get; set; }
 
-        [Required]        
+        [Required, DisplayName("Karoseri Code")]        
         public string KaroseriId { get; set; }
 
-        [Required]
+        [Required, DisplayName("Karoseri Name")]
         public string Description { get; set; }
 
+        [DisplayName("Is Active ?")]
         public bool IsActive { get; set; }
         
         public string CreatedBy { get; set; }

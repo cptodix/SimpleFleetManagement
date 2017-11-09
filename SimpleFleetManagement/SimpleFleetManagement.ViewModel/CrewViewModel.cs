@@ -11,22 +11,23 @@ namespace SimpleFleetManagement.ViewModel
     public class CrewViewModel
     {
         public int Id { get; set; }
-                
+        
+        [DisplayName("Crew Code")]
         public string CrewId { get; set; }
 
-        [Required]        
+        [Required, DisplayName("Crew Name")]        
         public string CrewName { get; set; }
 
-        [Required]        
+        [Required, DisplayName("Driving License Number")]        
         public string DrivingLicenseNumber { get; set; }
 
-        [Required]        
+        [Required, DisplayName("Address")]        
         public string Address { get; set; }
 
-        [Required]
+        [Required, DisplayName("Place Of Birth")]
         public string PlaceOfBirth { get; set; }
 
-        [DisplayFormat(DataFormatString="{0:dd MMM yyyy}",ApplyFormatInEditMode=true)]
+        [DisplayName("Date OF Birth"), DisplayFormat(DataFormatString="{0:dd MMM yyyy}",ApplyFormatInEditMode=true)]
         public DateTime DateOfBirth { get; set; }
 
         [Required]        
@@ -71,6 +72,7 @@ namespace SimpleFleetManagement.ViewModel
             }
         }
 
+        [DisplayName("Is Active ?")]
         public bool IsActive { get; set; }
 
         public string CreatedBy { get; set; }

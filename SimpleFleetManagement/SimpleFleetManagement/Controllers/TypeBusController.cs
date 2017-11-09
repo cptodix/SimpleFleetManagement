@@ -22,6 +22,12 @@ namespace SimpleFleetManagement.Controllers
             return View(model);
         }
 
+        public ActionResult GetByMerkId(string merkid)
+        {
+            List<TypeBusViewModel> model = TypeBusDataAccess.GetByMerkBus(merkid);
+            return View(model);
+        }
+
         public ActionResult Create()
         {
             ViewBag.MerkBusList = new SelectList(MerkBusDataAccess.GetAll(), "MerkId", "Description");

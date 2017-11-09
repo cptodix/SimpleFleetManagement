@@ -1,34 +1,41 @@
 ﻿
 @{
-    ViewBag.Title = "SparePart";
+    ViewBag.Title = "Part";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@ViewBag.Title</h2>
+@Styles.Render("~/AdminLTE/plugins/datatables/css")
 
-<div class="row">
-    <div class="col-lg-12">
-        <button type="button" id="btn-add" class="btn btn-success">Create New</button>
-    </div>
-</div>
 
-<div class="row">
-    <div class="col-lg-12">
-        <div id="table-list">Listnya nanti ada disini</div>
+<div class="panel-group">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <button type="button" id="btn-add" class="btn btn-success" title="Create New">
+                <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+                Create New
+            </button>
+        </div>
+        <div class="panel-body">
+            <div id="table-list">
+                @*<div class="progress progress-striped active" style="margin-bottom:0"><div class="progress-bar"style="width:100%"/></div>*@
+            </div>
+        </div>
     </div>
 </div>
 
 <div id="modal-form" class="modal fade" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title">Modal title</h3>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p>Modal body text goes here.</p>
+        <div class="panel-group">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">@ViewBag.Title</h4>
+                </div>
+                <div class="modal-body panel-body">
+                    <p>Modal body text goes here.</p>
+                </div>
             </div>
         </div>
     </div>
@@ -37,12 +44,15 @@
 @section Scripts
 {
     <script type="text/javascript">
+        var progHtml = '<div class="progress progress-striped active" style="margin-bottom:0"><div class="progress-bar"style="width:100%"/></div>';
+
         $(document).ready(function () {
             ShowList();
         });
 
         function ShowList()
         {
+            $("#table-list").html(progHtml);
             $.ajax({
                 url: '@Url.Action("List", "Part")',
                 type: 'get',
@@ -58,6 +68,7 @@
                 type: 'get',
                 success: function (result) {
                     $(".modal-body").html(result);
+                    $(".modal-title").html("Add Part")
                     $("#modal-form").modal("show");
                 }
             });
