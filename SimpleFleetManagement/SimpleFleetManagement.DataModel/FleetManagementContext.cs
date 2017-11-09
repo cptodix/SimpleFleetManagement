@@ -20,7 +20,10 @@ namespace SimpleFleetManagement.DataModel
         public virtual DbSet<MstPart> MstParts { get; set; }
         public virtual DbSet<MstService> MstServices { get; set; }
         public virtual DbSet<MstTypeBu> MstTypeBus { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<TrxBusOrder> TrxBusOrders { get; set; }
+        public virtual DbSet<TrxMaintenanceDetail> TrxMaintenanceDetails { get; set; }
+        public virtual DbSet<TrxMaintenanceHeader> TrxMaintenanceHeaders { get; set; }
+        public virtual DbSet<TrxOrder> TrxOrders { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -130,6 +133,11 @@ namespace SimpleFleetManagement.DataModel
                 .Property(e => e.ModifiedBy)
                 .IsUnicode(false);
 
+            modelBuilder.Entity<MstFleet>()
+                .HasMany(e => e.TrxMaintenanceHeaders)
+                .WithRequired(e => e.MstFleet)
+                .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<MstKaroseri>()
                 .Property(e => e.KaroseriId)
                 .IsUnicode(false);
@@ -149,7 +157,6 @@ namespace SimpleFleetManagement.DataModel
             modelBuilder.Entity<MstKaroseri>()
                 .HasMany(e => e.MstFleets)
                 .WithRequired(e => e.MstKaroseri)
-                .HasForeignKey(e => e.KaroseriId)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<MstMerkBu>()
@@ -193,6 +200,18 @@ namespace SimpleFleetManagement.DataModel
                 .Property(e => e.ModifiedBy)
                 .IsUnicode(false);
 
+            modelBuilder.Entity<MstPart>()
+                .HasMany(e => e.TrxMaintenanceDetails)
+                .WithRequired(e => e.MstPart)
+                .HasForeignKey(e => e.PartId)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<MstPart>()
+                .HasMany(e => e.TrxMaintenanceDetails1)
+                .WithRequired(e => e.MstPart1)
+                .HasForeignKey(e => e.PartId)
+                .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<MstService>()
                 .Property(e => e.ServiceId)
                 .IsUnicode(false);
@@ -208,6 +227,11 @@ namespace SimpleFleetManagement.DataModel
             modelBuilder.Entity<MstService>()
                 .Property(e => e.ModifiedBy)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<MstService>()
+                .HasMany(e => e.TrxMaintenanceDetails)
+                .WithRequired(e => e.MstService)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<MstTypeBu>()
                 .Property(e => e.TypeId)
@@ -233,6 +257,80 @@ namespace SimpleFleetManagement.DataModel
                 .HasMany(e => e.MstFleets)
                 .WithRequired(e => e.MstTypeBu)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<TrxBusOrder>()
+                .Property(e => e.OrderId)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<TrxBusOrder>()
+                .Property(e => e.FleetId)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<TrxBusOrder>()
+                .Property(e => e.DriverId)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<TrxBusOrder>()
+                .Property(e => e.AssitantId)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<TrxMaintenanceDetail>()
+                .Property(e => e.MaintenanceId)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<TrxMaintenanceDetail>()
+                .Property(e => e.MechanicId)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<TrxMaintenanceDetail>()
+                .Property(e => e.ServiceId)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<TrxMaintenanceDetail>()
+                .Property(e => e.PartId)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<TrxMaintenanceDetail>()
+                .Property(e => e.SubTotalPrice)
+                .HasPrecision(19, 4);
+
+            modelBuilder.Entity<TrxMaintenanceHeader>()
+                .Property(e => e.MaintenanceId)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<TrxMaintenanceHeader>()
+                .Property(e => e.FleetId)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<TrxMaintenanceHeader>()
+                .Property(e => e.TotalPrice)
+                .HasPrecision(19, 4);
+
+            modelBuilder.Entity<TrxMaintenanceHeader>()
+                .HasMany(e => e.TrxMaintenanceDetails)
+                .WithRequired(e => e.TrxMaintenanceHeader)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<TrxOrder>()
+                .Property(e => e.OrderId)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<TrxOrder>()
+                .Property(e => e.CustomerId)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<TrxOrder>()
+                .Property(e => e.OrderName)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<TrxOrder>()
+                .Property(e => e.Destination)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<TrxOrder>()
+                .Property(e => e.OrderStatus)
+                .IsFixedLength()
+                .IsUnicode(false);
         }
     }
 }

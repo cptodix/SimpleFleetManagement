@@ -6,10 +6,10 @@ namespace SimpleFleetManagement.DataModel
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("MstService")]
-    public partial class MstService
+    [Table("TrxMaintenanceHeader")]
+    public partial class TrxMaintenanceHeader
     {
-        public MstService()
+        public TrxMaintenanceHeader()
         {
             TrxMaintenanceDetails = new HashSet<TrxMaintenanceDetail>();
         }
@@ -19,23 +19,20 @@ namespace SimpleFleetManagement.DataModel
 
         [Key]
         [StringLength(10)]
-        public string ServiceId { get; set; }
+        public string MaintenanceId { get; set; }
+
+        public DateTime MaintenanceDate { get; set; }
 
         [Required]
-        [StringLength(50)]
-        public string Description { get; set; }
+        [StringLength(10)]
+        public string FleetId { get; set; }
 
-        public bool IsActive { get; set; }
+        public int MaintenanceKm { get; set; }
 
-        [StringLength(50)]
-        public string CreatedBy { get; set; }
+        [Column(TypeName = "money")]
+        public decimal TotalPrice { get; set; }
 
-        public DateTime? Created { get; set; }
-
-        [StringLength(50)]
-        public string ModifiedBy { get; set; }
-
-        public DateTime? Modified { get; set; }
+        public virtual MstFleet MstFleet { get; set; }
 
         public virtual ICollection<TrxMaintenanceDetail> TrxMaintenanceDetails { get; set; }
     }
