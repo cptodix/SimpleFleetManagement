@@ -24,15 +24,18 @@ namespace SimpleFleetManagement.Controllers
         public ActionResult Create()
         {
             ViewBag.KaroseriList = new SelectList(KaroseriDataAccess.GetAll(), "KaroseriId", "Description");
-            //ViewBag.TypeBusList = new SelectList(DivisionDataAccess.GetAll(), "Code", "Description");
+            ViewBag.MerkBusList = new SelectList(MerkBusDataAccess.GetAll(), "MerkId", "Description");
+            ViewBag.TypeBusList = new SelectList(TypeBusDataAccess.GetByMerkBus(""), "TypeId", "Description");
             return View();
         }
 
         public ActionResult Edit(int id)
         {
+            FleetViewModel model = FleetDataAccess.GetById(id);
             ViewBag.KaroseriList = new SelectList(KaroseriDataAccess.GetAll(), "KaroseriId", "Description");
-            //ViewBag.TypeBusList = new SelectList(DivisionDataAccess.GetAll(), "Code", "Description");
-            return View(FleetDataAccess.GetById(id));
+            ViewBag.MerkBusList = new SelectList(MerkBusDataAccess.GetAll(), "MerkId", "Description");
+            ViewBag.TypeBusList = new SelectList(TypeBusDataAccess.GetByMerkBus(model.MerkId), "TypeId", "Description");
+            return View(model);
         }
 
         public ActionResult Delete(int id)

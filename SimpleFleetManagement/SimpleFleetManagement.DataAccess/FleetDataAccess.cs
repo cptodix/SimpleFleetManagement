@@ -21,12 +21,16 @@ namespace SimpleFleetManagement.DataAccess
                           on flt.KaroseriId equals kar.KaroseriId
                           join tyb in db.MstTypeBus
                           on flt.TypeId equals tyb.TypeId
+                          join mrk in db.MstMerkBus
+                          on tyb.MerkId equals mrk.MerkId
                           select new FleetViewModel
                           {
                               Id = flt.Id,
                               FleetId = flt.FleetId,
                               TypeId = flt.TypeId,
                               TypeName = tyb.Description,
+                              MerkId = tyb.MerkId,
+                              MerkName = mrk.Description,
                               LicenseNumber = flt.LicenseNumber,
                               KaroseriId = flt.KaroseriId,
                               KaroseriName = kar.Description,
@@ -47,6 +51,8 @@ namespace SimpleFleetManagement.DataAccess
                           on flt.KaroseriId equals kar.KaroseriId
                           join tyb in db.MstTypeBus
                           on flt.TypeId equals tyb.TypeId
+                          join mrk in db.MstMerkBus
+                          on tyb.MerkId equals mrk.MerkId
                           where flt.Id == id
                           select new FleetViewModel
                           {
@@ -54,6 +60,8 @@ namespace SimpleFleetManagement.DataAccess
                               FleetId = flt.FleetId,
                               TypeId = flt.TypeId,
                               TypeName = tyb.Description,
+                              MerkId = tyb.MerkId,
+                              MerkName = mrk.MerkId,
                               LicenseNumber = flt.LicenseNumber,
                               KaroseriId = flt.KaroseriId,
                               KaroseriName = kar.Description,

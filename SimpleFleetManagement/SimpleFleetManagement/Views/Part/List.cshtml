@@ -1,46 +1,60 @@
 ﻿@model IEnumerable<SimpleFleetManagement.ViewModel.PartViewModel>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.PartId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsActive)
-        </th>        
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.PartId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsActive)
-        </td>
-        <td>
-            <input type="button" value="Edit" class="btn btn-warning  btn-edit" data-id="@item.Id" />
-            <input type="button" value="Delete" class="btn btn-danger  btn-delete" data-id="@item.Id" />
-        </td>
-    </tr>
-}
-
+<table id="data-list" class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PartId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PartId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsActive)
+                </td>
+                <td>
+                    <input type="button" value="Edit" class="btn btn-warning  btn-edit" data-id="@item.Id" />
+                    <input type="button" value="Delete" class="btn btn-danger  btn-delete" data-id="@item.Id" />
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
 
+@Scripts.Render("~/AdminLTE/plugins/datatables/js")
+
 <script type="text/javascript">
+    $("#data-list").DataTable({
+        "paging": true,
+        "lengthChange": true,
+        "searching": true,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false
+    });
+
     $(".btn-edit").click(function () {
         //alert('Idnya adalah : ' + $(this).attr("data-id"));
         $.ajax({
@@ -49,6 +63,7 @@
             data: { id: $(this).attr("data-id") },
             success: function (result) {
                 $(".modal-body").html(result);
+                $(".modal-title").html("Edit Part")
                 $("#modal-form").modal("show");
             }
         });
@@ -62,6 +77,7 @@
             data: { id: $(this).attr("data-id") },
             success: function (result) {
                 $(".modal-body").html(result);
+                $(".modal-title").html("Delete Part")
                 $("#modal-form").modal("show");
             }
         });

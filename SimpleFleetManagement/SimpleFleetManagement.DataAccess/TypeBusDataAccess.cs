@@ -23,6 +23,7 @@ namespace SimpleFleetManagement.DataAccess
                           {
                               Id = tb.Id,
                               MerkId = tb.MerkId,
+                              MerkName = mb.Description,
                               TypeId = tb.TypeId,
                               Description = tb.Description,
                               IsActive = tb.IsActive,
@@ -48,6 +49,7 @@ namespace SimpleFleetManagement.DataAccess
                           {
                               Id = tb.Id,
                               MerkId = tb.MerkId,
+                              MerkName = mb.Description,
                               TypeId = tb.TypeId,
                               Description = tb.Description,
                               IsActive = tb.IsActive,
@@ -60,6 +62,7 @@ namespace SimpleFleetManagement.DataAccess
             return result;
         }
 
+
         public static List<TypeBusViewModel> GetByMerkBus (string merkbusid)
         {
             List<TypeBusViewModel> result = new List<TypeBusViewModel>();
@@ -68,17 +71,13 @@ namespace SimpleFleetManagement.DataAccess
                 result = (from tb in db.MstTypeBus
                           join mb in db.MstMerkBus
                           on tb.MerkId equals mb.MerkId
+                          where tb.MerkId == merkbusid
                           select new TypeBusViewModel
                           {
                               Id = tb.Id,
                               MerkId = tb.MerkId,
                               TypeId = tb.TypeId,
-                              Description = tb.Description,
-                              IsActive = tb.IsActive,
-                              CreatedBy = tb.CreatedBy,
-                              Created = tb.Created,
-                              ModifiedBy = tb.ModifiedBy,
-                              Modified = tb.Modified
+                              Description = tb.Description
                           }).ToList();
             }
             return result;
