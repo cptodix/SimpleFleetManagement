@@ -9,6 +9,11 @@ namespace SimpleFleetManagement.DataModel
     [Table("MstFleet")]
     public partial class MstFleet
     {
+        public MstFleet()
+        {
+            TrxMaintenanceHeaders = new HashSet<TrxMaintenanceHeader>();
+        }
+
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
@@ -29,7 +34,7 @@ namespace SimpleFleetManagement.DataModel
         public string KaroseriId { get; set; }
 
         public int SeatCapacity { get; set; }
-        
+
         public bool IsActive { get; set; }
 
         [StringLength(50)]
@@ -45,5 +50,7 @@ namespace SimpleFleetManagement.DataModel
         public virtual MstKaroseri MstKaroseri { get; set; }
 
         public virtual MstTypeBu MstTypeBu { get; set; }
+
+        public virtual ICollection<TrxMaintenanceHeader> TrxMaintenanceHeaders { get; set; }
     }
 }

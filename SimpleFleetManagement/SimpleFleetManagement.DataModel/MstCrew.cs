@@ -9,6 +9,11 @@ namespace SimpleFleetManagement.DataModel
     [Table("MstCrew")]
     public partial class MstCrew
     {
+        public MstCrew()
+        {
+            TrxMaintenanceDetails = new HashSet<TrxMaintenanceDetail>();
+        }
+
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
@@ -54,5 +59,7 @@ namespace SimpleFleetManagement.DataModel
         public string ModifiedBy { get; set; }
 
         public DateTime? Modified { get; set; }
+
+        public virtual ICollection<TrxMaintenanceDetail> TrxMaintenanceDetails { get; set; }
     }
 }

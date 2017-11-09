@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace SimpleFleetManagement.Controllers
 {
-    public class TypeController : Controller
+    public class TypeBusController : Controller
     {
         // GET: Type
         public ActionResult Index()

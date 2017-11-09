@@ -44,7 +44,7 @@
     $(".btn-edit").click(function () {
         //alert('Idnya adalah : ' + $(this).attr("data-id"));
         $.ajax({
-            url: '@Url.Action("Edit", "Type")',
+            url: '@Url.Action("Edit", "TypeBus")',
             type: 'get',
             data: { id: $(this).attr("data-id") },
             success: function (result) {
@@ -57,7 +57,7 @@
     $(".btn-delete").click(function () {
         //alert('Idnya adalah : ' + $(this).attr("data-id"));
         $.ajax({
-            url: '@Url.Action("Delete", "Type")',
+            url: '@Url.Action("Delete", "TypeBus")',
             type: 'get',
             data: { id: $(this).attr("data-id") },
             success: function (result) {

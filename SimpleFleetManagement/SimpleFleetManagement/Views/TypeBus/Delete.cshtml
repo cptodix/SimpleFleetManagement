@@ -51,7 +51,7 @@
     $(".btn-delete-conf").click(function () {
         //alert('Idnya adalah : ' + $(this).attr('data-id'));
         $.ajax({
-            url: '@Url.Action("DeleteConfirm", "Type")',
+            url: '@Url.Action("DeleteConfirm", "TypeBus")',
             type: 'post',
             data: { id: $(this).attr('data-id') },
             success: function (result) {

@@ -1,11 +1,13 @@
 ﻿@model SimpleFleetManagement.ViewModel.TypeBusViewModel
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+
         <div class="form-group">
             @Html.LabelFor(model => model.MerkId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -38,11 +40,11 @@
                     @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
                 </div>
             </div>
-        </div>        
+        </div>
 
         <div class="form-group">
-            <div class="col-md-offset-8 col-md-10">
-                <input type="button" value="Create" class="btn btn-success btn-create-conf" />
+            <div class="col-md-offset-2 col-md-10">
+                <input type="button" value="Save Changes" class="btn btn-warning btn-edit-conf" />
                 <input type="button" value="Cancel" class="btn btn-default" data-dismiss="modal" />
             </div>
         </div>
@@ -52,9 +54,9 @@
     @Scripts.Render("~/bundles/jqueryval")
 
 <script type="text/javascript">
-    $(".btn-create-conf").click(function (){
+    $(".btn-edit-conf").click(function (){
     var item = {
-        Id: 0,
+        Id: $("#Id").val(),
         MerkId: $("#MerkId").val(),
         TypeId: $("#TypeId").val(),
         Description: $("#Description").val(),
@@ -62,7 +64,7 @@
     };
         //alert(JSON.stringify(item));
     $.ajax({
-        url: '@Url.Action("Create", "Type")',
+        url: '@Url.Action("Edit", "TypeBus")',
         type: 'post',
         data : {model : item},
         success: function (result)

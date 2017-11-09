@@ -44,7 +44,7 @@
         function ShowList()
         {
             $.ajax({
-                url: '@Url.Action("List","Type")',
+                url: '@Url.Action("List","TypeBus")',
                 type: 'get',
                 success : function (result)
                 {
@@ -55,7 +55,7 @@
 
     $("#btn-add").click(function () {
             $.ajax({
-                url: '@Url.Action("Create","Type")',
+                url: '@Url.Action("Create","TypeBus")',
                 type: 'get',
                 success: function (result) {
                     $(".modal-body").html(result);
