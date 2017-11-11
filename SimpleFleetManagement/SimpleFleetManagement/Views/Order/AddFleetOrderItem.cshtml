@@ -1,0 +1,54 @@
+﻿@model SimpleFleetManagement.ViewModel.FleetOrderViewModel
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FleetId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.FleetId, (IEnumerable<SelectListItem>)ViewBag.FleetExceptList, "Select Fleet", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.FleetId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DriverId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.DriverId, (IEnumerable<SelectListItem>)ViewBag.DriverExceptList, "Select Driver", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.DriverId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AssitantId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.AssitantId, (IEnumerable<SelectListItem>)ViewBag.AssistantExceptList, "Select Assistant", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.AssitantId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="modal-footer">
+                <input type="button" value="Add to Fleet Order List" class="btn btn-success btn-add-busorder" />
+                <input type="button" value="Cancel" class="btn btn-default" data-dismiss="modal" />
+        </div>
+    </div>
+}
+<script type="text/javascript">
+    $(".btn-add-busorder").click(function () {
+        var item = {
+            FleetId: $("#FleetId").val(),
+            FleetName: $("#FleetId option:selected").text(),
+            DriverId: $("#DriverId").val(),
+            DriverName: $("#DriverId option:selected").text(),
+            AssitantId: $("#AssitantId").val(),
+            AssitantName: $("#AssitantId option:selected").text()
+        };
+        //alert(JSON.stringify(item));
+        AddFleetOrderItem(item);
+})
+    </script>

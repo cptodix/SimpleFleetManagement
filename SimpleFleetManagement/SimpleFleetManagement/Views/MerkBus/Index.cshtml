@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Bus Brand";
+    ViewBag.Title = "Merk List";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -69,7 +69,7 @@
                 type: 'get',
                 success: function (result) {
                     $(".modal-body").html(result);
-                    $(".modal-title").html("Add Bus Brand")
+                    $(".modal-title").html("Add Merk");
                     $("#modal-form").modal("show");
                 }
             });

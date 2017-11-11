@@ -58,6 +58,54 @@ namespace SimpleFleetManagement.DataAccess
             return result;
         }
 
+        public static List<CrewViewModel> GetByDriverException(FleetOrderException fleetorderexception)
+        {
+            List<CrewViewModel> result = new List<CrewViewModel>();
+            using (var db = new FleetManagementContext())
+            {
+                result = (from crw in db.MstCrews
+                          where crw.Role == "D"
+                          select new CrewViewModel
+                          {
+                              Id = crw.Id,
+                              CrewId = crw.CrewId,
+                              CrewName = crw.CrewName,
+                              DrivingLicenseNumber = crw.DrivingLicenseNumber,
+                              Address = crw.Address,
+                              PlaceOfBirth = crw.PlaceOfBirth,
+                              DateOfBirth = crw.DateOfBirth,
+                              Gender = crw.Gender,
+                              Role = crw.Role,
+                              IsActive = crw.IsActive
+                          }).Where(o => !fleetorderexception.driverexceptlist.Contains(o.CrewId)).ToList();
+            }
+            return result;
+        }
+
+        public static List<CrewViewModel> GetByAssistantException(FleetOrderException fleetorderexception)
+        {
+            List<CrewViewModel> result = new List<CrewViewModel>();
+            using (var db = new FleetManagementContext())
+            {
+                result = (from crw in db.MstCrews
+                          where crw.Role == "A"
+                          select new CrewViewModel
+                          {
+                              Id = crw.Id,
+                              CrewId = crw.CrewId,
+                              CrewName = crw.CrewName,
+                              DrivingLicenseNumber = crw.DrivingLicenseNumber,
+                              Address = crw.Address,
+                              PlaceOfBirth = crw.PlaceOfBirth,
+                              DateOfBirth = crw.DateOfBirth,
+                              Gender = crw.Gender,
+                              Role = crw.Role,
+                              IsActive = crw.IsActive
+                          }).Where(o => !fleetorderexception.assistantexceptlist.Contains(o.CrewId)).ToList();
+            }
+            return result;
+        }
+
         public static bool Update(CrewViewModel model)
         {
             bool result = true;

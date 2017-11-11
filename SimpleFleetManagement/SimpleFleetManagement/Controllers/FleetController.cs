@@ -21,6 +21,7 @@ namespace SimpleFleetManagement.Controllers
             List<FleetViewModel> model = FleetDataAccess.GetAll();
             return View(model);
         }
+
         public ActionResult Create()
         {
             ViewBag.KaroseriList = new SelectList(KaroseriDataAccess.GetAll(), "KaroseriId", "Description");

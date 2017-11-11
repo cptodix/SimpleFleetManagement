@@ -32,10 +32,10 @@ namespace SimpleFleetManagement.DataModel
         [Column(TypeName = "money")]
         public decimal SubTotalPrice { get; set; }
 
-        public virtual MstCrew MstCrew { get; set; }
-
         public virtual MstPart MstPart { get; set; }
-        
+
+        public virtual MstPart MstPart1 { get; set; }
+
         public virtual MstService MstService { get; set; }
 
         public virtual TrxMaintenanceHeader TrxMaintenanceHeader { get; set; }

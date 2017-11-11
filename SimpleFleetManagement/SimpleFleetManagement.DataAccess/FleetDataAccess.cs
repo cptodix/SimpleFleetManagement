@@ -72,6 +72,32 @@ namespace SimpleFleetManagement.DataAccess
             return result;
         }
 
+        public static List<FleetViewModel> GetByFleetException(FleetOrderException fleetorderexception)
+        {
+            List<FleetViewModel> result = new List<FleetViewModel>();
+            using (var db = new FleetManagementContext())
+            {
+                result = (from flt in db.MstFleets
+                          join tyb in db.MstTypeBus
+                          on flt.TypeId equals tyb.TypeId
+                          join mrk in db.MstMerkBus
+                          on tyb.MerkId equals mrk.MerkId
+                          select new FleetViewModel
+                          {
+                              Id = flt.Id,
+                              FleetId = flt.FleetId,
+                              TypeId = flt.TypeId,
+                              TypeName = tyb.Description,
+                              MerkName = mrk.Description,
+                              LicenseNumber = flt.LicenseNumber,
+                              KaroseriId = flt.KaroseriId,
+                              SeatCapacity = flt.SeatCapacity,
+                              IsActive = flt.IsActive
+                          }).Where(o => !fleetorderexception.fleetexceptlist.Contains(o.FleetId)).ToList();
+            }
+            return result;
+        }
+
         public static bool Update(FleetViewModel model)
         {
             bool result = true;

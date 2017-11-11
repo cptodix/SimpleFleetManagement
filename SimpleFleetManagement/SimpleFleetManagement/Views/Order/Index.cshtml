@@ -1,0 +1,205 @@
+﻿
+@{
+    ViewBag.Title = "New Order";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="panel-group">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-md-9">
+                    <button type="button" id="btn-new" class="btn btn-twitter" title="New Order" onclick="window.location.href='@Url.Action("Index","Order")'">
+                        <span class="fa fa-shopping-cart" aria-hidden="true"></span>
+                        New Order
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="form-group">
+                <div class="col-md-3">
+                    <input id="txt-search" type="text" class="form-control" placeholder="Search" />
+                </div>
+                <div class="col-md-2">
+                    <button type="button" id="btn-add" class="btn btn-search" title="Search Customer">
+                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                        Search Customer
+                    </button>
+                </div>
+                <div class="col-md-2">
+                    <button type="button" id="btn-add-customer" class="btn btn-success btn-add-customer" title="Add New Customer">
+                        Add New Customer
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div id="employee info">
+                @Html.Partial("OrderForm")
+            </div>
+        </div>
+        <div class="panel-heading">
+            <button type="button" class="btn btn-primary btn-add-fleetorder">Add Fleet</button>
+            <button type="button" class="btn btn-success btn-save-order">Save Order</button>
+        </div>
+        <div>
+            @Html.Action("FleetOrderList", "Order")
+        </div>
+    </div>
+</div>
+
+<div id="modal-form" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="panel-group">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">@ViewBag.Title</h4>
+                </div>
+                <div class="modal-body panel-body">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+    $('.datepicker').datepicker({ format: "dd M yyyy" });
+
+    $('#txt-search').keypress(function (e) {
+        if (e.keyCode == 13)
+            $('.btn-search').click();
+    });
+
+    //////////// CUSTOMER AND ORDER ZONE ////////////////
+
+    $(".btn-add-customer").click(function () {
+        //to be added
+    });
+
+    $(".btn-search").click(function () {
+        SelectCustomer($('#txt-search').val());
+    });
+
+    function SelectCustomer(customerid) {
+        $.ajax({
+            url: '@Url.Action("GetByCustomerId", "Customer")',
+            type: 'get',
+            data: { customerid: customerid },
+            success: function (result) {
+                if (result.success) {
+                    var ctm = result.data;
+                    $("#CustomerId").val(ctm.CustomerId);
+                    $("#CustomerName").val(ctm.CustomerName + " (" + ctm.OrganizationName + ")");
+                }
+                else {
+                    CustomerList();
+                }
+            }
+        });
+    }
+
+    function CustomerList() {
+        $.ajax({
+            url: '@Url.Action("GetByFilter", "Customer")',
+            data: { filterstring: $('#txt-search').val() },
+            type: 'get',
+            success: function (result) {
+                $(".modal-body").html(result);
+                $(".modal-title").html("Select Customer");
+                $("#modal-form").modal('show');
+            }
+        });
+    }
+
+    //////////// BUS ORDER ZONE ////////////////
+
+    $('.btn-add-fleetorder').click(function () {
+              
+        if (($("#CustomerId").val().length > 0) &&
+            ($("#StartDate").val().length > 0) &&
+            ($("#EndDate").val().length > 0)) {
+
+            
+            var fleetexceptList = [''];
+            $("input[name=FleetId]").each(function () {
+                fleetexceptList.push($(this).val());
+            });
+
+            var driverexceptList = [''];
+            $("input[name=DriverId]").each(function () {
+                driverexceptList.push($(this).val());
+            });
+
+            var assistantexceptList = [''];
+            $("input[name=AssitantId]").each(function () {
+                assistantexceptList.push($(this).val());
+            });
+
+            var startDate = $("#StartDate").val();
+            var endDate = $("#EndDate").val();
+
+            var item = {
+                fleetexceptlist: fleetexceptList,
+                driverexceptlist: driverexceptList,
+                assistantexceptlist: assistantexceptList,
+                startdate: startDate,
+                enddate: endDate
+            };
+            //alert(JSON.stringify(item));
+            $.ajax({
+                url: '@Url.Action("AddFleetOrderItem", "Order")',
+                type: 'get',
+                traditional: true,
+                data: { //fleetorderexception: item
+                    fleetexceptlistVal: fleetexceptList,
+                    driverexceptlistVal: driverexceptList,
+                    assistantexceptlistVal: assistantexceptList,
+                    startdateVal: startDate,
+                    enddateVal: endDate
+                },
+                success: function (result) {
+                    $(".modal-body").html(result);
+                    $(".modal-title").html("Add Fleet Order");
+                    $("#modal-form").modal('show');
+                }
+            });
+        } else {
+            alert("Please complete all fields");
+        }
+    });
+
+        function AddFleetOrderItem(item) {
+        //alert(JSON.stringify(item));
+        $.ajax({
+            url: '@Url.Action("FleetOrderItem", "Order")',
+            type: 'post',
+            data: { model: item },
+            success: function (result) {
+                if (result) {
+                    $("#modal-form").modal("hide");
+                    $(".fleet-order-list").append(result)
+                } else {
+                    alert('Error : ' + result.Message);
+                }
+            }
+        });
+    }
+
+    function RemoveItem(obj) {
+        //$(obj).closest('tr').remove();
+        var description = 'Bus ' + $(obj).closest('tr').find('input[name=FleetName]').val();
+        var remove = confirm("Are you sure to remove " + description + " ?");
+        if (remove) {
+            $(obj).closest('tr').remove();
+        }
+    }
+
+    </script>
+}

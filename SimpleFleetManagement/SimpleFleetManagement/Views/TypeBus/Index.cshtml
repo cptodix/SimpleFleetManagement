@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Brand Type";
+    ViewBag.Title = "Type List";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -83,6 +83,7 @@
                 type: 'get',
                 success: function (result) {
                     $(".modal-body").html(result);
+                    $(".modal-title").html("Add Type");
                     $("#modal-form").modal("show");
                 }
             });
