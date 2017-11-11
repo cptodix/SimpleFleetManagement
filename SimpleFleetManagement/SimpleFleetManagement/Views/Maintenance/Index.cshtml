@@ -4,5 +4,143 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Maintenance</h2>
+@*<h2>Maintenance</h2>*@
 
+<div class="panel-group">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-md-9">
+                    <button type="button" id="btn-new" class="btn btn-twitter" title="New Transaction" onclick="window.location.href='@Url.Action("Index","Maintenance")'">
+                        <span class="fa fa-shopping-cart" aria-hidden="true"></span>
+                        Add Maintenance
+                    </button>
+                </div>
+                <div class="col-lg-3">
+                    Refference Code : <span id="reference-code">-</span>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-3">
+                    <input id="txt-search" type="text" class="form-control" placeholder="Search" />
+                </div>
+                <div class="col-md-6">
+                    <button type="button" id="btn-add" class="btn btn-search" title="Search Fleet">
+                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                        Search Fleet
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div id="maintenance info">
+                @Html.Partial("MaintenanceHeaderForm")
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modal-form" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="panel-group">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">@ViewBag.Title</h4>
+                </div>
+                <div class="modal-body panel-body">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*//nanti ini diedit ya*@ 
+
+@*<div class="panel-group">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <button type="button" class="btn btn-primary btn-add-salarycomponent">Add Item</button>
+            <button type="button" class="btn btn-success btn-save-salarycomponent">Save Selling</button>
+        </div>
+        <div class="selling-list">
+            @Html.Action("SellingList", "Selling")
+        </div>
+    </div>
+</div>*@
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $('.datepicker').datepicker({ format: "dd M yyyy" });
+
+        $(".btn-search").click(function () {
+            SelectFleet($('#txt-search').val());
+        });
+
+        function SelectFleet(fleetid) {
+            //alert("jalan woe");
+            $.ajax({
+                url: '@Url.Action("GetFleetByFleetId", "Fleet")',
+                type: 'get',
+                data: { fleetid: fleetid },
+                success: function (result) {
+                    if (result.success) {
+                        var f = result.data;
+                        //$("#MaintenanceId").val();
+                        //$("#MaintenanceDate").val();
+                        $("#FleetId").val(f.FleetId);
+                        $("#BrandTypeName").val(f.BrandTypeName);
+                        $("#LicenseNumber").val(f.LicenseNumber);
+                        //$("#MaintenanceKm").val();
+                    }
+                    else {
+                        FleetList();
+                    }
+                }
+            });
+        }
+
+        function FleetList() {
+            $.ajax({
+                url: '@Url.Action("GetByFilter", "Fleet")',
+                data: { filterstring: $('#txt-search').val() },
+                type: 'get',
+                success: function (result) {
+                    $(".modal-body").html(result);
+                    $(".modal-title").html("Select Fleet");
+                    $("#modal-form").modal('show');
+                }
+            });
+        }
+
+        @*$('.btn-add-item').click(function () {
+            //alert($("#BadgeId").val().length);
+            if ($("#MaintenanceId").val().length > 0) {
+                var itemlist = [''];
+                $("input[name=ItemCode]").each(function () {
+                    itemlist.push($(this).val());
+                });
+                //alert(itemlist);
+                $.ajax({
+                    url: '@Url.Action("ExceptList", "Item")',
+                    data: { exceptlist: itemlist },
+                    type: 'get',
+                    traditional: true,
+                    success: function (result) {
+                        $(".modal-body").html(result);
+                        $(".modal-title").html("Add an Item");
+                        $("#modal-form").modal('show');
+                    }
+                });
+            } else {
+                alert("No Employee Selected");
+            }
+});*@
+
+    </script>
+    }

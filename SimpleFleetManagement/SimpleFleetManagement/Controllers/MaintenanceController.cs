@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SimpleFleetManagement.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -18,5 +19,23 @@ namespace SimpleFleetManagement.Controllers
         {
             return View();
         }
+
+        public ActionResult MaintenanceList()
+        {
+            List<MaintenanceDetailViewModel> model = new List<MaintenanceDetailViewModel>();
+            return View(model);
+        }
+
+        //[HttpPost]
+        //public ActionResult SaveMaintenance(MaintenanceHeaderViewModel model)
+        //{
+        //    try
+        //    {
+        //        if (ModelState.IsValid)
+        //        {
+
+        //        }
+        //    }
+        //}
     }
 }

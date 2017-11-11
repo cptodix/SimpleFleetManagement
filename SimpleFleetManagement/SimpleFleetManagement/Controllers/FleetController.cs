@@ -21,6 +21,30 @@ namespace SimpleFleetManagement.Controllers
             List<FleetViewModel> model = FleetDataAccess.GetAll();
             return View(model);
         }
+
+        public ActionResult GetFleetByFleetId(string fleetid)
+        {
+            FleetViewModel model = FleetDataAccess.GetByFleetId(fleetid);
+            if (model != null)
+            {
+                return Json(new { success = true, data = model }, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json(new { success = false, JsonRequestBehavior.AllowGet }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        public ActionResult GetByFilter(string filterstring)
+        {
+            return View(FleetDataAccess.GetByFilter(filterstring));
+        }
+
+        public ActionResult FilterList(string filterstring)
+        {
+            return View(FleetDataAccess.GetByFilter(filterstring));
+        }
+
         public ActionResult Create()
         {
             ViewBag.KaroseriList = new SelectList(KaroseriDataAccess.GetAll(), "KaroseriId", "Description");

@@ -1,0 +1,53 @@
+﻿@model IEnumerable<SimpleFleetManagement.ViewModel.FleetViewModel>
+
+<table id="data-list" class="table">
+    <thead>
+        <tr>
+            <th>
+
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FleetId)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.BrandTypeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LicenseNumber)
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <button type="button" class="btn btn-success btn-select-fleet" data-id="@item.Id" data-fleet="@item.FleetId" data-dismiss="modal">
+                        Select
+                    </button>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FleetId)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.BrandTypeName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LicenseNumber)
+                </td>
+
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+<script type="text/javascript">
+    $('.btn-select-fleet').click(function () {
+        SelectFleet($(this).attr("data-fleet"));
+    });
+
+</script>

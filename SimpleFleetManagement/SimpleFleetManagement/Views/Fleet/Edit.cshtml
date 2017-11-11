@@ -77,7 +77,7 @@
     $('#MerkId').change(function () {
         //alert($('#MerkId').val());
         $.ajax({
-            url: '@Url.Action("GetByMerkId","Type")',
+            url: '@Url.Action("GetByMerkId","TypeBus")',
             type: 'get',
             data: { merkid: $(this).val() },
             success: function (result) {

@@ -72,6 +72,72 @@ namespace SimpleFleetManagement.DataAccess
             return result;
         }
 
+        public static FleetViewModel GetByFleetId(string fleetid)
+        {
+            FleetViewModel result = new FleetViewModel();
+            using (var db = new FleetManagementContext())
+            {
+                result = (from flt in db.MstFleets
+                          join kar in db.MstKaroseris
+                          on flt.KaroseriId equals kar.KaroseriId
+                          join tyb in db.MstTypeBus
+                          on flt.TypeId equals tyb.TypeId
+                          join mrk in db.MstMerkBus
+                          on tyb.MerkId equals mrk.MerkId
+                          //where flt.Id == fleetid
+                          where flt.FleetId == fleetid
+                          select new FleetViewModel
+                          {
+                              Id = flt.Id,
+                              FleetId = flt.FleetId,
+                              TypeId = flt.TypeId,
+                              TypeName = tyb.Description,
+                              MerkId = tyb.MerkId,
+                              MerkName = mrk.MerkId,
+                              LicenseNumber = flt.LicenseNumber,
+                              KaroseriId = flt.KaroseriId,
+                              KaroseriName = kar.Description,
+                              SeatCapacity = flt.SeatCapacity,
+                              IsActive = flt.IsActive
+                          }).FirstOrDefault();
+            }
+            return result;
+        }
+
+        public static List<FleetViewModel> GetByFilter(string filterString)
+        {
+            List<FleetViewModel> result = new List<FleetViewModel>();
+            using (var db = new FleetManagementContext())
+            {
+                result = (from flt in db.MstFleets
+                          join kar in db.MstKaroseris
+                          on flt.KaroseriId equals kar.KaroseriId
+                          join tyb in db.MstTypeBus
+                          on flt.TypeId equals tyb.TypeId
+                          join mrk in db.MstMerkBus
+                          on tyb.MerkId equals mrk.MerkId
+                          //where flt.Id == id
+                          //where flt.FleetId == fleetid
+                          //from flt in MstFleet()
+                          select new FleetViewModel
+                          {
+                              Id = flt.Id,
+                              FleetId = flt.FleetId,
+                              TypeId = flt.TypeId,
+                              TypeName = tyb.Description,
+                              MerkId = tyb.MerkId,
+                              MerkName = mrk.MerkId,
+                              LicenseNumber = flt.LicenseNumber,
+                              KaroseriId = flt.KaroseriId,
+                              KaroseriName = kar.Description,
+                              SeatCapacity = flt.SeatCapacity,
+                              IsActive = flt.IsActive
+                          }).ToList();
+                result = result.Where(o => o.FleetId.ToLower().Contains(filterString.ToLower()) || o.LicenseNumber.ToLower().Contains(filterString.ToLower()) || o.MerkName.ToLower().Contains(filterString.ToLower()) || o.TypeName.ToLower().Contains(filterString.ToLower())).ToList();
+            }
+            return result;
+        }
+
         public static bool Update(FleetViewModel model)
         {
             bool result = true;

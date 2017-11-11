@@ -12,7 +12,6 @@ namespace SimpleFleetManagement.DataModel
         public MstPart()
         {
             TrxMaintenanceDetails = new HashSet<TrxMaintenanceDetail>();
-            TrxMaintenanceDetails1 = new HashSet<TrxMaintenanceDetail>();
         }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -42,7 +41,5 @@ namespace SimpleFleetManagement.DataModel
         public DateTime? Modified { get; set; }
 
         public virtual ICollection<TrxMaintenanceDetail> TrxMaintenanceDetails { get; set; }
-
-        public virtual ICollection<TrxMaintenanceDetail> TrxMaintenanceDetails1 { get; set; }
     }
 }

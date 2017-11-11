@@ -5,8 +5,8 @@
 {
     @Html.AntiForgeryToken()
     
-    @*<div class="form-horizontal">        
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-horizontal">        
+        @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
 
         <div class="form-group">
@@ -57,19 +57,53 @@
     </div>*@
     
     <div class="form-group">
-        <label class="control-label col-md-2" for="MaintenanceId"></label>
+        <label class="control-label col-md-2" for="MaintenanceId">Maintenance Id</label>
         <div class="col-md-10">
-            <input class="form-control text-box single-line" data-val-required="Harus diisi ya" id="MaintenanceId" name="MaintenanceId" readonly="readonly" type="text" value="">
+            <input class="form-control text-box single-line" data-val="true" data-val-required="Harus diisi ya" id="MaintenanceId" name="MaintenanceId" @*readonly="readonly" type="text" value=""*@>
         </div>
     </div>
-    
-    
+
+    <div class="form-group">
+        <label class="control-label col-md-2" for="MaintenanceDate">Maintenance Date</label>
+        <div class="col-md-10">
+            <input class="form-control text-box single-line datepicker" id="MaintenanceDate" name="MaintenanceDate" readonly="readonly" type="text" value="@DateTime.Now.ToString("dd MMM yyyy")">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2" for="FleetId">Fleet Id</label>
+        <div class="col-md-10">
+            <input class="form-control text-box single-line" data-val="true" data-val-required="Harus diisi ya" id="FleetId" name="FleetId" readonly="readonly" type="text" value="">
+        </div>
+    </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="BrandTypeName">Brand Type Name</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" data-val="true" data-val-required="Harus diisi ya" id="BrandTypeName" name="BrandTypeName" readonly="readonly" type="text" value="">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="LicenseNumber">License Number</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" data-val="true" data-val-required="Harus diisi ya" id="LicenseNumber" name="LicenseNumber" readonly="readonly" type="text" value="">
+            </div>
+        </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2" for="MaintenanceKm">Maintenance KM</label>
+        <div class="col-md-10">
+            <input class="form-control text-box single-line" data-val="true" data-val-required="Harus diisi ya" id="MaintenanceKm" name="MaintenanceKm" @*readonly="readonly" type="text" value=""*@>
+        </div>
+    </div>
+
+    <div class="col-lg-offset-2">
+        <h1>Total : <span id="selling-total">0.00</span></h1>
+    </div>
+ </div>   
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+<script type="text/javascript">
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+</script>
