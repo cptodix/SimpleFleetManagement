@@ -12,10 +12,12 @@ namespace SimpleFleetManagement.ViewModel
     {
         public int Id { get; set; }
 
-        [Required, DisplayName("Brand Code")]
+        [Required] 
+        [DisplayName("Brand Code")]
         public string MerkId { get; set; }
 
-        [Required, DisplayName("Brand Name")]
+        [Required] 
+        [DisplayName("Brand Name")]
         public string Description { get; set; }
 
         [DisplayName("Is Active ?")]

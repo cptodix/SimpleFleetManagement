@@ -9,6 +9,8 @@ namespace SimpleFleetManagement.ViewModel
 {
     public class OrderViewModel
     {
+        public int Id { get; set; }
+
         [DisplayName("Order Code")]
         public string OrderId { get; set; }
 
@@ -35,7 +37,27 @@ namespace SimpleFleetManagement.ViewModel
         [DisplayName("Persons")]
         public int TotalPerson { get; set; }
 
-        [DisplayName("Order Status")]
         public string OrderStatus { get; set; }
+
+        [DisplayName("Order Status")]
+        public string OrderStatusName
+        {
+            get
+            {
+                switch(OrderStatus)
+                {
+                    case "B":
+                        return "Booked";
+                    case "O":
+                        return "Ongoing";
+                    case "D":
+                        return "Done";
+                    default:
+                        return "";
+                }
+            }
+        }
+
+        public List<FleetOrderViewModel> BusOrder { get; set; }
     }
 }

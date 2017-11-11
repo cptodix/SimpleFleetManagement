@@ -35,6 +35,58 @@ namespace SimpleFleetManagement.DataAccess
             return result;
         }
 
+        public static CustomerViewModel GetByCustomerId(string customerid)
+        {
+            CustomerViewModel result = new CustomerViewModel();
+            using (var db = new FleetManagementContext())
+            {
+                result = (from ctm in db.MstCustomers
+                          where ctm.CustomerId == customerid
+                          select new CustomerViewModel
+                          {
+                              Id = ctm.Id,
+                              CustomerId = ctm.CustomerId,
+                              CustomerName = ctm.CustomerName,
+                              OrganizationName = ctm.OrganizationName,
+                              CustomerAddress = ctm.CustomerAddress,
+                              OrganizationAddress = ctm.OrganizationAddress,
+                              IdNumber = ctm.IdNumber,
+                              CustomerPhone = ctm.CustomerPhone,
+                              OrganizationPhone = ctm.OrganizationPhone,
+                              OrganizationEmail = ctm.OrganizationEmail,
+                              IsActive = ctm.IsActive
+                          }).FirstOrDefault();
+            }
+            return result;
+        }
+
+        public static List<CustomerViewModel> GetByFilter(string filterstring)
+        {
+            List<CustomerViewModel> result = new List<CustomerViewModel>();
+            using (var db = new FleetManagementContext())
+            {
+                result = (from ctm in db.MstCustomers
+                          select new CustomerViewModel
+                          {
+                              Id = ctm.Id,
+                              CustomerId = ctm.CustomerId,
+                              CustomerName = ctm.CustomerName,
+                              OrganizationName = ctm.OrganizationName,
+                              CustomerAddress = ctm.CustomerAddress,
+                              OrganizationAddress = ctm.OrganizationAddress,
+                              IdNumber = ctm.IdNumber,
+                              CustomerPhone = ctm.CustomerPhone,
+                              OrganizationPhone = ctm.OrganizationPhone,
+                              OrganizationEmail = ctm.OrganizationEmail,
+                              IsActive = ctm.IsActive
+                          }).ToList();
+                result = result.Where(o => o.CustomerId.ToLower().Contains(filterstring.ToLower()) ||
+                    o.CustomerName.ToLower().Contains(filterstring.ToLower()) ||
+                    o.OrganizationName.ToLower().Contains(filterstring.ToLower())).ToList();
+            }
+            return result;
+        }
+
         public static CustomerViewModel GetById(int id)
         {
             CustomerViewModel result = new CustomerViewModel();

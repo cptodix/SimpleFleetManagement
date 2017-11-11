@@ -1,0 +1,33 @@
+﻿@model IEnumerable<SimpleFleetManagement.ViewModel.FleetOrderViewModel>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FleetId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DriverId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssitantId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody class="fleet-order-list">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FleetId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DriverId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AssitantId)
+                </td>
+            </tr>
+        }
+</table>

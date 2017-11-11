@@ -6,8 +6,8 @@ namespace SimpleFleetManagement.DataModel
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("TrxBusOrder")]
-    public partial class TrxBusOrder
+    [Table("TrxFleetOrder")]
+    public partial class TrxFleetOrder
     {
         public int Id { get; set; }
 

@@ -1,0 +1,40 @@
+﻿@model IEnumerable<SimpleFleetManagement.ViewModel.CustomerViewModel>
+
+<table id="data-list" class="table">
+    <thead>
+        <tr>
+            <th>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrganizationName)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <button type="button" class="btn btn-success btn-select-customer" data-id="@item.Id" data-customerid="@item.CustomerId" data-dismiss="modal">
+                        Select
+                    </button>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrganizationName)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script type="text/javascript">
+    $('.btn-select-customer').click(function () {
+        SelectCustomer($(this).attr("data-customerid"));
+    });
+</script>
