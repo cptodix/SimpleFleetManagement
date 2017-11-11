@@ -21,7 +21,6 @@ namespace SimpleFleetManagement.DataModel
         public virtual DbSet<MstService> MstServices { get; set; }
         public virtual DbSet<MstTypeBu> MstTypeBus { get; set; }
 
-        public virtual DbSet<TrxBusOrder> TrxBusOrders { get; set; }
         public virtual DbSet<TrxFleetOrder> TrxFleetOrders { get; set; }
         public virtual DbSet<TrxMaintenanceDetail> TrxMaintenanceDetails { get; set; }
         public virtual DbSet<TrxMaintenanceHeader> TrxMaintenanceHeaders { get; set; }

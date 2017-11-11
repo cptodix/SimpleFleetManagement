@@ -104,7 +104,6 @@ namespace SimpleFleetManagement.DataAccess
             return result;
         }
 
-        public static List<FleetViewModel> GetByFilter(string filterString)
         public static List<FleetViewModel> GetByFleetException(FleetOrderException fleetorderexception)
         {
             List<FleetViewModel> result = new List<FleetViewModel>();
@@ -134,13 +133,6 @@ namespace SimpleFleetManagement.DataAccess
                               SeatCapacity = flt.SeatCapacity,
                               IsActive = flt.IsActive
                           }).ToList();
-                result = result.Where(o => o.FleetId.ToLower().Contains(filterString.ToLower()) || o.LicenseNumber.ToLower().Contains(filterString.ToLower()) || o.MerkName.ToLower().Contains(filterString.ToLower()) || o.TypeName.ToLower().Contains(filterString.ToLower())).ToList();
-                              MerkName = mrk.Description,
-                              LicenseNumber = flt.LicenseNumber,
-                              KaroseriId = flt.KaroseriId,
-                              SeatCapacity = flt.SeatCapacity,
-                              IsActive = flt.IsActive
-                          }).Where(o => !fleetorderexception.fleetexceptlist.Contains(o.FleetId)).ToList();
             }
             return result;
         }

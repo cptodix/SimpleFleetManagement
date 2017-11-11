@@ -36,10 +36,6 @@ namespace SimpleFleetManagement.DataModel
 
         public virtual MstPart MstPart { get; set; }
 
-        public virtual MstPart MstPart { get; set; }
-
-        public virtual MstPart MstPart1 { get; set; }
-
         public virtual MstService MstService { get; set; }
 
         public virtual TrxMaintenanceHeader TrxMaintenanceHeader { get; set; }
